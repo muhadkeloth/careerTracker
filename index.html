@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>120-Day Career Switch</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+  <div class="cmdbar">
+    <div class="title">
+      <h1>120-DAY CAREER SWITCH</h1>
+      <p>Backend + AI + Cloud &mdash; from where you are to where you're aiming</p>
+    </div>
+    <div class="stat">
+      <div class="num" id="days-left">&mdash;</div>
+      <div class="label">days remaining</div>
+    </div>
+  </div>
+
+  <div class="startdate-row">
+    Program start date:
+    <input type="date" id="start-date-input">
+    <span id="week-indicator"></span>
+  </div>
+  <div class="progress-outer"><div class="progress-inner" id="overall-progress" style="width:0%"></div></div>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="dashboard">Dashboard</button>
+    <button class="tab-btn" data-tab="roadmap">Roadmap</button>
+    <button class="tab-btn" data-tab="log">Weekly Log</button>
+    <button class="tab-btn" data-tab="apps">Applications</button>
+  </div>
+
+  <div class="tab-panel active" id="tab-dashboard">
+    <div class="panel">
+      <h3>THIS WEEK'S SCORE</h3>
+      <div class="score-big"><span class="num" id="week-score">0</span><span class="of">/ 100</span></div>
+      <div id="dash-bars"></div>
+      <div class="streak" id="streak-line"></div>
+    </div>
+    <div class="panel">
+      <h3>CUMULATIVE HOURS (ALL WEEKS LOGGED)</h3>
+      <div id="cumulative-bars"></div>
+    </div>
+    <div class="panel">
+      <h3>MONTH-END MILESTONES</h3>
+      <div id="milestones"></div>
+    </div>
+    <div class="panel">
+      <button class="btn secondary" id="reset-btn">Reset all progress</button>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="tab-roadmap">
+    <div id="roadmap-root"></div>
+  </div>
+
+  <div class="tab-panel" id="tab-log">
+    <div class="panel">
+      <h3>LOG HOURS PER WEEK</h3>
+      <div id="log-root"></div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="tab-apps">
+    <div class="panel">
+      <h3>ADD APPLICATION</h3>
+      <div class="app-form">
+        <input type="text" id="app-company" placeholder="Company">
+        <input type="text" id="app-role" placeholder="Role">
+        <input type="date" id="app-date">
+        <select id="app-status">
+          <option>Applied</option>
+          <option>Screening</option>
+          <option>Interview</option>
+          <option>Offer</option>
+          <option>Rejected</option>
+          <option>Ghosted</option>
+        </select>
+        <input type="date" id="app-followup" title="Follow-up date">
+        <button class="btn" id="add-app-btn">Add</button>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>TRACKER</h3>
+      <div id="apps-root"></div>
+    </div>
+  </div>
+
+  <div class="footer-note">Data is stored locally to your account for this tool &mdash; nothing here is shared.</div>
+</div>
+<div id="save-flag">Saved</div>
+
+<script src="app.js"></script>
+</body>
+</html>

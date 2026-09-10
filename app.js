@@ -1,234 +1,3 @@
-<style>
-  :root{
-    --ink:#14181D;
-    --surface:#1B2129;
-    --surface-2:#222933;
-    --paper:#E8E4DA;
-    --paper-dim:#9BA3AD;
-    --accent:#D6A24A;
-    --accent-dim:#8A6C33;
-    --teal:#5B8A8E;
-    --rust:#B85C4A;
-    --line:#2C333D;
-  }
-  *{box-sizing:border-box;}
-  body{
-    margin:0;
-    background:var(--ink);
-    color:var(--paper);
-    font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
-    line-height:1.5;
-    padding:0 0 60px 0;
-  }
-  .mono{font-family:ui-monospace,"SF Mono","Cascadia Code","Consolas",monospace;}
-  h1,h2,h3{font-family:ui-monospace,"SF Mono","Cascadia Code","Consolas",monospace; font-weight:600; letter-spacing:-0.01em; margin:0;}
-  a{color:var(--accent);}
-
-  .wrap{max-width:880px;margin:0 auto;padding:28px 20px;}
-
-  /* header / command bar */
-  .cmdbar{
-    display:flex; flex-wrap:wrap; gap:18px; align-items:center; justify-content:space-between;
-    border-bottom:1px solid var(--line); padding-bottom:20px; margin-bottom:24px;
-  }
-  .cmdbar .title h1{font-size:20px;}
-  .cmdbar .title p{margin:4px 0 0; color:var(--paper-dim); font-size:13px;}
-  .stat{text-align:right;}
-  .stat .num{font-family:ui-monospace,monospace; font-size:28px; color:var(--accent); line-height:1;}
-  .stat .label{font-size:11px; color:var(--paper-dim); text-transform:none;}
-
-  .startdate-row{display:flex; gap:10px; align-items:center; font-size:13px; color:var(--paper-dim); margin-bottom:20px;}
-  .startdate-row input{
-    background:var(--surface); border:1px solid var(--line); color:var(--paper);
-    padding:6px 8px; border-radius:3px; font-family:inherit; font-size:13px;
-  }
-
-  /* progress bar */
-  .progress-outer{height:6px; background:var(--surface-2); border-radius:3px; overflow:hidden; margin:10px 0 24px;}
-  .progress-inner{height:100%; background:var(--accent);}
-
-  /* tabs */
-  .tabs{display:flex; gap:2px; margin-bottom:22px; border-bottom:1px solid var(--line);}
-  .tab-btn{
-    background:none; border:none; color:var(--paper-dim); font-family:inherit; font-size:13px;
-    padding:10px 4px; margin-right:22px; cursor:pointer; border-bottom:2px solid transparent;
-  }
-  .tab-btn.active{color:var(--paper); border-bottom-color:var(--accent);}
-  .tab-panel{display:none;}
-  .tab-panel.active{display:block;}
-
-  /* generic panel/card */
-  .panel{background:var(--surface); border:1px solid var(--line); border-radius:4px; padding:18px; margin-bottom:16px;}
-  .panel h3{font-size:14px; color:var(--paper-dim); margin-bottom:12px;}
-
-  /* dashboard bars */
-  .bar-row{display:flex; align-items:center; gap:10px; margin-bottom:9px; font-size:12px;}
-  .bar-row .cat{width:88px; color:var(--paper-dim); flex-shrink:0;}
-  .bar-track{flex:1; height:8px; background:var(--surface-2); border-radius:2px; overflow:hidden;}
-  .bar-fill{height:100%; background:var(--teal);}
-  .bar-fill.over{background:var(--accent);}
-  .bar-val{width:70px; text-align:right; color:var(--paper-dim); flex-shrink:0;}
-
-  .score-big{display:flex; align-items:baseline; gap:10px; margin-bottom:14px;}
-  .score-big .num{font-size:40px; color:var(--accent); font-family:ui-monospace,monospace;}
-  .score-big .of{color:var(--paper-dim); font-size:14px;}
-  .streak{font-size:12px; color:var(--paper-dim); margin-top:8px;}
-  .streak b{color:var(--accent);}
-
-  .milestone-row{display:flex; gap:10px; align-items:flex-start; padding:8px 0; border-bottom:1px solid var(--line); font-size:13px;}
-  .milestone-row:last-child{border-bottom:none;}
-  .milestone-row input{margin-top:3px;}
-  .milestone-row.done span{color:var(--paper-dim); text-decoration:line-through;}
-
-  /* roadmap */
-  details.month{border:1px solid var(--line); border-radius:4px; margin-bottom:12px; background:var(--surface);}
-  details.month>summary{
-    list-style:none; cursor:pointer; padding:14px 16px; font-size:14px; display:flex; justify-content:space-between;
-  }
-  details.month>summary::-webkit-details-marker{display:none;}
-  details.month>summary .m-title{font-family:ui-monospace,monospace; color:var(--paper);}
-  details.month>summary .m-sub{color:var(--paper-dim); font-size:12px;}
-  .month-body{padding:0 16px 16px;}
-
-  .week-card{border-left:2px solid var(--accent-dim); padding:12px 0 12px 14px; margin-bottom:4px;}
-  .week-card .wk-head{display:flex; align-items:baseline; gap:10px; margin-bottom:4px;}
-  .week-card .wk-num{color:var(--accent); font-family:ui-monospace,monospace; font-size:12px;}
-  .week-card .wk-title{font-size:14px; font-weight:600;}
-  .week-card .wk-obj{color:var(--paper-dim); font-size:12.5px; margin-bottom:8px;}
-  .task-row{display:flex; gap:8px; align-items:flex-start; font-size:12.5px; margin-bottom:5px;}
-  .task-row input{margin-top:2px;}
-  .task-row.done label{color:var(--paper-dim); text-decoration:line-through;}
-  .deliverable{font-size:12px; color:var(--teal); margin-top:6px;}
-  .target-hours{font-size:11px; color:var(--paper-dim); margin-top:6px;}
-
-  /* weekly log */
-  .log-week{border-bottom:1px solid var(--line); padding:12px 0; display:flex; flex-wrap:wrap; align-items:center; gap:10px;}
-  .log-week:last-child{border-bottom:none;}
-  .log-week .lw-label{width:130px; flex-shrink:0; font-size:12.5px;}
-  .log-week .lw-label b{color:var(--accent); font-family:ui-monospace,monospace; font-size:11px; display:block;}
-  .log-inputs{display:flex; flex-wrap:wrap; gap:8px; flex:1;}
-  .log-field{display:flex; flex-direction:column; gap:2px;}
-  .log-field label{font-size:10px; color:var(--paper-dim);}
-  .log-field input{
-    width:52px; background:var(--surface-2); border:1px solid var(--line); color:var(--paper);
-    padding:5px 6px; border-radius:3px; font-family:inherit; font-size:12px;
-  }
-  .log-score{width:60px; text-align:right; font-family:ui-monospace,monospace; color:var(--accent); font-size:15px;}
-
-  /* applications */
-  .app-form{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px;}
-  .app-form input, .app-form select{
-    background:var(--surface-2); border:1px solid var(--line); color:var(--paper);
-    padding:7px 9px; border-radius:3px; font-family:inherit; font-size:13px;
-  }
-  .app-form input[type=text]{flex:1; min-width:120px;}
-  .app-form button, .btn{
-    background:var(--accent); color:var(--ink); border:none; padding:7px 14px; border-radius:3px;
-    font-family:inherit; font-size:13px; font-weight:600; cursor:pointer;
-  }
-  .btn.secondary{background:none; border:1px solid var(--line); color:var(--paper-dim);}
-
-  table{width:100%; border-collapse:collapse; font-size:12.5px;}
-  th{text-align:left; color:var(--paper-dim); font-weight:500; font-size:11px; padding:6px 8px; border-bottom:1px solid var(--line);}
-  td{padding:7px 8px; border-bottom:1px solid var(--line); vertical-align:middle;}
-  select.status{
-    background:var(--surface-2); border:1px solid var(--line); color:var(--paper); border-radius:3px; font-size:12px; padding:3px 5px;
-  }
-  .del{background:none; border:none; color:var(--rust); cursor:pointer; font-size:12px;}
-  .empty{color:var(--paper-dim); font-size:13px; padding:14px 0;}
-
-  .footer-note{color:var(--paper-dim); font-size:11.5px; text-align:center; margin-top:30px;}
-  #save-flag{position:fixed; bottom:16px; right:16px; background:var(--surface); border:1px solid var(--line); color:var(--paper-dim); font-size:11px; padding:6px 10px; border-radius:3px; opacity:0; transition:opacity .3s;}
-  #save-flag.show{opacity:1;}
-</style>
-
-<div class="wrap">
-  <div class="cmdbar">
-    <div class="title">
-      <h1>120-DAY CAREER SWITCH</h1>
-      <p>Backend + AI + Cloud &mdash; from where you are to where you're aiming</p>
-    </div>
-    <div class="stat">
-      <div class="num" id="days-left">&mdash;</div>
-      <div class="label">days remaining</div>
-    </div>
-  </div>
-
-  <div class="startdate-row">
-    Program start date:
-    <input type="date" id="start-date-input">
-    <span id="week-indicator"></span>
-  </div>
-  <div class="progress-outer"><div class="progress-inner" id="overall-progress" style="width:0%"></div></div>
-
-  <div class="tabs">
-    <button class="tab-btn active" data-tab="dashboard">Dashboard</button>
-    <button class="tab-btn" data-tab="roadmap">Roadmap</button>
-    <button class="tab-btn" data-tab="log">Weekly Log</button>
-    <button class="tab-btn" data-tab="apps">Applications</button>
-  </div>
-
-  <div class="tab-panel active" id="tab-dashboard">
-    <div class="panel">
-      <h3>THIS WEEK'S SCORE</h3>
-      <div class="score-big"><span class="num" id="week-score">0</span><span class="of">/ 100</span></div>
-      <div id="dash-bars"></div>
-      <div class="streak" id="streak-line"></div>
-    </div>
-    <div class="panel">
-      <h3>CUMULATIVE HOURS (ALL WEEKS LOGGED)</h3>
-      <div id="cumulative-bars"></div>
-    </div>
-    <div class="panel">
-      <h3>MONTH-END MILESTONES</h3>
-      <div id="milestones"></div>
-    </div>
-    <div class="panel">
-      <button class="btn secondary" id="reset-btn">Reset all progress</button>
-    </div>
-  </div>
-
-  <div class="tab-panel" id="tab-roadmap">
-    <div id="roadmap-root"></div>
-  </div>
-
-  <div class="tab-panel" id="tab-log">
-    <div class="panel">
-      <h3>LOG HOURS PER WEEK</h3>
-      <div id="log-root"></div>
-    </div>
-  </div>
-
-  <div class="tab-panel" id="tab-apps">
-    <div class="panel">
-      <h3>ADD APPLICATION</h3>
-      <div class="app-form">
-        <input type="text" id="app-company" placeholder="Company">
-        <input type="text" id="app-role" placeholder="Role">
-        <input type="date" id="app-date">
-        <select id="app-status">
-          <option>Applied</option>
-          <option>Screening</option>
-          <option>Interview</option>
-          <option>Offer</option>
-          <option>Rejected</option>
-          <option>Ghosted</option>
-        </select>
-        <input type="date" id="app-followup" title="Follow-up date">
-        <button class="btn" id="add-app-btn">Add</button>
-      </div>
-    </div>
-    <div class="panel">
-      <h3>TRACKER</h3>
-      <div id="apps-root"></div>
-    </div>
-  </div>
-
-  <div class="footer-note">Data is stored locally to your account for this tool &mdash; nothing here is shared.</div>
-</div>
-<div id="save-flag">Saved</div>
-
-<script>
 (function(){
   const STORAGE_KEY = 'career_tracker_v1';
   const CATS = ['backend','ai','cloud','dsa','project','applications'];
@@ -307,9 +76,27 @@
     const h = {}; CATS.forEach(c => h[c] = 0); return h;
   }
 
+  function getStorage(){
+    if(window.storage && typeof window.storage.get === 'function' && typeof window.storage.set === 'function'){
+      return window.storage;
+    }
+    const fallback = (typeof window.localStorage !== 'undefined') ? window.localStorage : window.sessionStorage;
+    return {
+      get: async (key, def) => {
+        try { return { value: fallback.getItem(key) || def }; }
+        catch(e){ return { value: def }; }
+      },
+      set: async (key, value) => {
+        try { fallback.setItem(key, value); }
+        catch(e){ console.error('Storage unavailable:', e); }
+      }
+    };
+  }
+  const storage = getStorage();
+
   async function loadState(){
     try{
-      const res = await window.storage.get(STORAGE_KEY, false);
+      const res = await storage.get(STORAGE_KEY, false);
       if(res && res.value){
         const parsed = JSON.parse(res.value);
         state = Object.assign(state, parsed);
@@ -323,7 +110,7 @@
 
   async function saveState(){
     try{
-      await window.storage.set(STORAGE_KEY, JSON.stringify(state), false);
+      await storage.set(STORAGE_KEY, JSON.stringify(state));
       flashSaved();
     }catch(e){
       console.error('Save failed', e);
@@ -621,4 +408,3 @@
     renderAll();
   })();
 })();
-</script>
