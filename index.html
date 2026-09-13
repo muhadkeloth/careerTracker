@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>120-Day Career Switch</title>
+<title>Software Developer Switch Strategy</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div class="wrap">
   <div class="cmdbar">
     <div class="title">
-      <h1>120-DAY CAREER SWITCH</h1>
-      <p>Backend + AI + Cloud &mdash; from where you are to where you're aiming</p>
+      <h1>SOFTWARE DEVELOPER SWITCH STRATEGY</h1>
+      <p>Backend Node.js + TypeScript + PostgreSQL + Redis + AWS + AI/LLM &mdash; a 4-6 month switch plan</p>
     </div>
     <div class="stat">
       <div class="num" id="days-left">&mdash;</div>
@@ -23,14 +23,20 @@
     Program start date:
     <input type="date" id="start-date-input">
     <span id="week-indicator"></span>
+    <div class="plan-toggle">
+      <span class="pt-label">Plan</span>
+      <button class="plan-btn active" data-plan="4">4-month</button>
+      <button class="plan-btn" data-plan="6">6-month</button>
+    </div>
   </div>
   <div class="progress-outer"><div class="progress-inner" id="overall-progress" style="width:0%"></div></div>
 
   <div class="tabs">
     <button class="tab-btn active" data-tab="dashboard">Dashboard</button>
-    <button class="tab-btn" data-tab="roadmap">Roadmap</button>
-    <button class="tab-btn" data-tab="log">Weekly Log</button>
+    <button class="tab-btn" data-tab="plan">Weekly Plan</button>
+    <button class="tab-btn" data-tab="track">Tracking</button>
     <button class="tab-btn" data-tab="apps">Applications</button>
+    <button class="tab-btn" data-tab="guide">Tips &amp; Guide</button>
   </div>
 
   <div class="tab-panel active" id="tab-dashboard">
@@ -41,26 +47,34 @@
       <div class="streak" id="streak-line"></div>
     </div>
     <div class="panel">
+      <h3>APPLICATION FUNNEL (ALL TIME)</h3>
+      <div id="funnel"></div>
+    </div>
+    <div class="panel">
       <h3>CUMULATIVE HOURS (ALL WEEKS LOGGED)</h3>
       <div id="cumulative-bars"></div>
     </div>
     <div class="panel">
-      <h3>MONTH-END MILESTONES</h3>
-      <div id="milestones"></div>
+      <h3>SUCCESS CHECKPOINTS (DAY 30 / 60 / 90 / 120)</h3>
+      <div id="checkpoints"></div>
+    </div>
+    <div class="panel">
+      <h3>MARKET PRIORITIES &amp; SALARY TARGETS</h3>
+      <div id="markets"></div>
     </div>
     <div class="panel">
       <button class="btn secondary" id="reset-btn">Reset all progress</button>
     </div>
   </div>
 
-  <div class="tab-panel" id="tab-roadmap">
-    <div id="roadmap-root"></div>
+  <div class="tab-panel" id="tab-plan">
+    <div id="plan-root"></div>
   </div>
 
-  <div class="tab-panel" id="tab-log">
+  <div class="tab-panel" id="tab-track">
     <div class="panel">
-      <h3>LOG HOURS PER WEEK</h3>
-      <div id="log-root"></div>
+      <h3>LOG HOURS PER WEEK + JOB-SEARCH QUOTAS</h3>
+      <div id="track-root"></div>
     </div>
   </div>
 
@@ -69,7 +83,10 @@
       <h3>ADD APPLICATION</h3>
       <div class="app-form">
         <input type="text" id="app-company" placeholder="Company">
-        <input type="text" id="app-role" placeholder="Role">
+        <input type="text" id="app-role" placeholder="Role / Title">
+        <input type="text" id="app-location" placeholder="Location">
+        <input type="text" id="app-source" placeholder="Source (Naukri / LinkedIn / Referral)">
+        <input type="text" id="app-stack" placeholder="Required stack">
         <input type="date" id="app-date">
         <select id="app-status">
           <option>Applied</option>
@@ -79,18 +96,186 @@
           <option>Rejected</option>
           <option>Ghosted</option>
         </select>
+        <input type="text" id="app-resume" placeholder="Resume version">
         <input type="date" id="app-followup" title="Follow-up date">
+        <input type="text" id="app-notes" placeholder="Notes / rejection reason">
         <button class="btn" id="add-app-btn">Add</button>
       </div>
     </div>
     <div class="panel">
       <h3>TRACKER</h3>
+      <div class="filter-bar">
+        <input type="text" id="app-search" placeholder="Search company, role, stack, notes...">
+        <select id="app-filter-status">
+          <option value="">All statuses</option>
+          <option>Applied</option>
+          <option>Screening</option>
+          <option>Interview</option>
+          <option>Offer</option>
+          <option>Rejected</option>
+          <option>Ghosted</option>
+        </select>
+        <select id="app-filter-location">
+          <option value="">All locations</option>
+        </select>
+        <input type="date" id="app-filter-from" title="Applied from" value="">
+        <span class="filter-sep">&rarr;</span>
+        <input type="date" id="app-filter-to" title="Applied to" value="">
+        <button class="btn secondary" id="app-filter-clear">Clear</button>
+      </div>
+      <div id="apps-count" class="apps-count"></div>
       <div id="apps-root"></div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="tab-guide">
+    <div class="guide panel">
+
+      <div class="callout">
+        <div class="ctitle">THE DECISION</div>
+        Do not learn a new stack and start over. Keep the production experience in JavaScript/TypeScript, turn it into a
+        credible backend-engineering identity, add PostgreSQL / Redis / cloud / testing, and use AI integration as the
+        differentiator. Run India as the main funnel while testing UAE, India-eligible remote, and selective Saudi roles.
+      </div>
+
+      <h4>Target positioning (what to present)</h4>
+      <table class="data-table">
+        <thead><tr><th>Layer</th><th>What to present</th><th>Depth required</th></tr></thead>
+        <tbody>
+          <tr><td><b>Primary identity</b></td><td>Backend Software Engineer &mdash; Node.js / TypeScript</td><td>Production-quality APIs, architecture, async Node, security, performance</td></tr>
+          <tr><td>Database</td><td>PostgreSQL + MongoDB</td><td>SQL, indexes, transactions, query plans, schema design; retain MongoDB competence</td></tr>
+          <tr><td>Caching / jobs</td><td>Redis + BullMQ (or equivalent)</td><td>Caching, rate limiting, queues, retries, idempotency</td></tr>
+          <tr><td>API architecture</td><td>REST first; GraphQL familiarity</td><td>Auth, validation, versioning, pagination, errors, observability</td></tr>
+          <tr><td>Cloud</td><td>AWS core</td><td>ECS/ECR or EC2, RDS, S3, CloudWatch, IAM, SQS; know what each is for</td></tr>
+          <tr><td>Delivery</td><td>Docker + GitHub Actions</td><td>Build/test/deploy pipeline; environment management; secrets</td></tr>
+          <tr><td>Quality</td><td>Jest + integration/e2e tests</td><td>Test API boundaries and critical business workflows</td></tr>
+          <tr><td>AI layer</td><td>OpenAI / Azure OpenAI / Bedrock + RAG basics</td><td>Embeddings, pgvector / vector DB, retrieval, tool calling, evals, cost/latency</td></tr>
+          <tr><td>Frontend</td><td>React / Next.js</td><td>Enough to own end-to-end features; not your headline specialization</td></tr>
+          <tr><td>Interview CS</td><td>DSA + backend/system design</td><td>~100 solid problems; API/data-model/caching/queues/scaling fundamentals</td></tr>
+        </tbody>
+      </table>
+
+      <h4>What to learn deeply</h4>
+      <ul>
+        <li><b>Advanced TypeScript</b> &mdash; generics, narrowing, utility types, error modeling, clean interfaces.</li>
+        <li><b>Node.js internals</b> &mdash; event loop, async patterns, streams, worker threads at a conceptual level, memory/performance troubleshooting.</li>
+        <li><b>PostgreSQL</b> &mdash; joins, indexes, transactions/isolation, normalization, query plans, pagination, locking, practical optimization.</li>
+        <li><b>Redis</b> &mdash; caching, TTL, distributed locks conceptually, rate limiting, queues/job state.</li>
+        <li><b>Backend architecture</b> &mdash; modular monolith first, service boundaries, retries, idempotency, eventual consistency, API security.</li>
+        <li><b>Docker + AWS</b> &mdash; containerize, deploy, logs/metrics, IAM basics, RDS/S3/SQS/ECS/ECR/CloudWatch.</li>
+        <li><b>Testing</b> &mdash; Jest unit/integration tests, API contract thinking, Playwright for one e2e path.</li>
+        <li><b>AI application engineering</b> &mdash; one reliable RAG system and one tool-using workflow; production concerns, not ML math.</li>
+        <li><b>DSA</b> &mdash; arrays/hash maps, strings, two pointers, sliding window, stacks/queues, trees, graph basics, binary search, heaps, recursion/backtracking, intervals, basic DP.</li>
+        <li><b>Communication</b> &mdash; concise project explanations and STAR answers.</li>
+      </ul>
+
+      <h4>What NOT to prioritize yet</h4>
+      <ul>
+        <li>Deep Kubernetes administration and platform engineering.</li>
+        <li>Java/Spring Boot or .NET/C# from zero as a primary stack.</li>
+        <li>Fine-tuning foundation models, advanced ML math, CUDA/GPU engineering.</li>
+        <li>Five AI frameworks at surface level &mdash; one production-quality AI integration is worth more.</li>
+        <li>Dozens of toy CRUD repositories.</li>
+      </ul>
+
+      <h4>Portfolio projects</h4>
+      <div class="proj">
+        <div class="ptitle">Project 1 &mdash; Multi-tenant production SaaS backend</div>
+        <p>A realistic B2B workflow platform: Node/TypeScript, NestJS or clean Express, PostgreSQL/Prisma, Redis, background jobs, S3, WebSockets, Docker, AWS, GitHub Actions. Multi-tenancy, RBAC, audit logs, rate limiting, idempotent webhook processing, file uploads, search/filtering, scheduled jobs, notifications, admin surface. API docs, integration tests, load/performance notes, an ADR.</p>
+        <p class="proof">Resume proof: "Designed and deployed a multi-tenant Node/TypeScript backend with PostgreSQL, Redis, background jobs, RBAC and automated deployment."</p>
+      </div>
+      <div class="proj">
+        <div class="ptitle">Project 2 &mdash; AI operations / knowledge assistant</div>
+        <p>Ingest documents, chunk and embed, store in pgvector, retrieve with filters, stream answers, attach citations, support tool/function calls, maintain tenant isolation, log latency/token usage, evaluate retrieval quality. TypeScript/Node for the service; Python optional, never required.</p>
+        <p class="proof">Resume proof: "Built a production-style RAG service with Node/TypeScript, vector search, retrieval evaluation, streaming responses, access control and cost/latency telemetry."</p>
+      </div>
+      <div class="proj">
+        <div class="ptitle">Project 3 &mdash; Harden your current CarCare project</div>
+        <p>Do not build another simple app. Improve API performance, add PostgreSQL as a reporting/analytical path, Redis caching, background jobs, tests, structured logging, CI/CD, Docker and an architecture document. Never expose proprietary work from your employer.</p>
+      </div>
+
+      <h4>Job-search execution system</h4>
+      <ul class="quotas">
+        <li><b>20-25 high-fit applications/week</b> once Month 2 begins &mdash; prioritize fit over volume.</li>
+        <li><b>5 referral conversations/week</b> &mdash; colleagues, alumni, engineers at target companies, community.</li>
+        <li><b>10 recruiter / hiring-manager messages/week</b> with a two-sentence pitch and one relevant proof project.</li>
+        <li>Track each application: title, company, location, source, required stack, date, resume version, response, interview stage, reason for rejection.</li>
+      </ul>
+      <p class="cap-sub">Primary titles: Backend Software Engineer, Backend Developer, Software Engineer &mdash; Backend, Node.js Backend Engineer, TypeScript Backend Engineer, Software Engineer &mdash; Full Stack (Node/React), Product Engineer. Secondary (only when backend/application-focused): AI Application Engineer, AI Software Engineer, GenAI Application Engineer.</p>
+      <p class="cap-sub">Search strings:</p>
+      <span class="search-str">("Node.js" OR NestJS OR Express) AND TypeScript AND (PostgreSQL OR SQL) AND (AWS OR cloud)</span>
+      <span class="search-str">("Node.js" OR TypeScript) AND (RAG OR LLM OR "AI integration") AND (backend OR API)</span>
+      <span class="search-str">("Software Engineer" OR "Backend Engineer") AND TypeScript AND AWS AND PostgreSQL</span>
+      <p class="cap-sub">Resume rules: lead with measurable production work &mdash; not a technology list. Keep BCA honest but small. Two variants: India product/GCC and Gulf/remote (the Gulf version makes relocation + sponsorship readiness explicit).</p>
+
+      <h4>Salary strategy</h4>
+      <table class="data-table">
+        <thead><tr><th>Market</th><th>Priority</th><th>Core target</th><th>Stretch</th><th>Reality check</th></tr></thead>
+        <tbody>
+          <tr><td>India &mdash; Bengaluru / Hyderabad / Pune / Chennai / NCR</td><td>Primary funnel</td><td>₹10-15 LPA</td><td>₹14-18 LPA</td><td>₹12 LPA is realistic but must be earned through evidence.</td></tr>
+          <tr><td>UAE &mdash; Dubai / Abu Dhabi</td><td>Parallel high-value funnel</td><td>AED 12k-15k/month</td><td>AED 15k-18k+</td><td>Quality-target band, not a guaranteed market median.</td></tr>
+          <tr><td>Saudi Arabia &mdash; Riyadh</td><td>Selective parallel funnel</td><td>SAR 10k-16k/month</td><td>SAR 16k-20k+</td><td>Listings skew 3-8+ years; authorization is employer-linked.</td></tr>
+          <tr><td>International remote from India</td><td>Selective upside funnel</td><td>₹15-25 LPA equivalent</td><td>₹25-35+ LPA equivalent</td><td>Only where "India Remote" / India employment is explicit.</td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <div class="ctitle">NEGOTIATION SCRIPT</div>
+        <p class="mono-b">"My current package is ₹3 LPA. For my next move I am targeting roles where I can contribute as a backend-focused software engineer in Node.js/TypeScript, with production API, database, cloud and AI-integration capability. Based on the scope of the role and current market, I am targeting roughly ₹12-15 LPA, with flexibility depending on responsibilities and the overall package."</p>
+        <p>Never justify a 300-400% hike. Justify through scope, skills, evidence and market level. Never fabricate current compensation, experience or production exposure.</p>
+      </div>
+
+      <h4>Sponsorship &amp; remote legality</h4>
+      <ul>
+        <li><b>UAE:</b> standard employment visa is employer-applied; employers must obtain the work permit. The virtual-work residence route is for working outside the country, not a substitute for in-country sponsorship.</li>
+        <li><b>Saudi:</b> non-Saudis need a work permit and employer employment; permanent/temporary work-visa processes exist via official platforms.</li>
+        <li><b>Remote from India:</b> direct employment through an Indian entity, an Employer of Record, or contractor engagement. Apply where "India Remote" is explicit &mdash; never on a generic "remote" label.</li>
+        <li><b>Education risk (ongoing BCA):</b> a screening risk at some companies, not proof you cannot reach ₹10-15 LPA. Compete on production experience, measurable work, portfolio depth and interview performance while continuing the degree.</li>
+      </ul>
+
+      <h4>What can prevent the target salary</h4>
+      <ul>
+        <li>Resume stays "MERN developer" with no measurable backend ownership.</li>
+        <li>Projects are CRUD clones with no performance / security / testing / cloud / architecture proof.</li>
+        <li>DSA is weak enough to fail coding rounds after recruiter screens.</li>
+        <li>You cannot explain current production work deeply &mdash; trade-offs, bugs, architecture, DB choices, performance fixes.</li>
+        <li>You apply indiscriminately and accumulate ATS rejections instead of testing a targeted thesis.</li>
+        <li>You claim AI/cloud expertise without building and debugging a working system.</li>
+        <li>Communication is unclear, especially project explanations and behavioral answers.</li>
+        <li>The ₹3 LPA anchors your negotiation instead of the role's scope and market band.</li>
+      </ul>
+
+      <h4>Key sources</h4>
+      <ul class="src-list">
+        <li><a href="https://in.linkedin.com/jobs/node-js-software-engineer-jobs-bengaluru">[1]</a> LinkedIn &mdash; Node.js Software Engineer jobs, Bengaluru</li>
+        <li><a href="https://in.linkedin.com/jobs/backend-software-engineer-node-js-jobs-bengaluru-ka?f_AL=true&amp;pageNum=0&amp;position=1">[2]</a> LinkedIn &mdash; Backend Software Engineer Node.js, Bengaluru</li>
+        <li><a href="https://in.linkedin.com/jobs/view/backend-engineer-node-js-typescript-graphql-at-tata-consultancy-services-4460985829">[3]</a> TCS Backend Engineer (Node.js, TypeScript, GraphQL)</li>
+        <li><a href="https://jobs.weekday.works/weekday-ai-full-stack-developer-%28react%2Fangular%20%2B%20node.js%2Ftypescript%29">[4]</a> Weekday &mdash; Full Stack Developer (React/Angular + Node/TS), Bengaluru</li>
+        <li><a href="https://ae.linkedin.com/jobs/view/junior-software-engineer-at-searchability%C2%AE-4366722815">[9]</a> Junior Software Engineer, Dubai &mdash; AED 12k-15k, visa sponsorship</li>
+        <li><a href="https://job-boards.greenhouse.io/learneo/jobs/7583620">[11]</a> Learneo SDE I (Full Stack), India Remote</li>
+        <li><a href="https://www.business-standard.com/industry/news/india-it-services-hiring-demand-september-xpheno-ai-jobs-126090100375_1.html">[13]</a> Business Standard &mdash; IT-services hiring demand at 18-month high, Sept 2026</li>
+        <li><a href="https://www.reuters.com/world/india/wipros-ai-push-frees-capacity-equivalent-20000-workers-cto-says-2026-09-10/">[16]</a> Reuters &mdash; Wipro AI frees capacity equivalent to ~20,000 workers</li>
+        <li><a href="https://www.glassdoor.co.in/Salaries/bengaluru-software-engineer-salary-SRCH_IL.0%2C9_IC2940587_KO10%2C27.htm">[30]</a> Glassdoor &mdash; Software Engineer salaries, Bengaluru 2026</li>
+        <li><a href="https://cutshort.io/salary/nodejs-developer/bangalore">[31]</a> Cutshort &mdash; Node.js Developer Salary, Bangalore, 2 years</li>
+        <li><a href="https://u.ae/en/information-and-services/visa-and-emirates-id/residence-visas/residence-visa-for-working-in-the-uae">[32]</a> Official UAE Government &mdash; Residence visa for working in UAE</li>
+        <li><a href="https://my.gov.sa/en/services/2691970">[34]</a> Official Saudi Government &mdash; Permanent work visa</li>
+      </ul>
     </div>
   </div>
 
   <div class="footer-note">Data is stored locally to your account for this tool &mdash; nothing here is shared.</div>
 </div>
+
+<div class="modal-overlay" id="delete-modal" hidden>
+  <div class="modal">
+    <h3>Remove application?</h3>
+    <p id="modal-app-info"></p>
+    <div class="modal-actions">
+      <button class="btn secondary" id="modal-cancel">Cancel</button>
+      <button class="btn danger" id="modal-confirm">Remove</button>
+    </div>
+  </div>
+</div>
+
 <div id="save-flag">Saved</div>
 
 <script src="app.js"></script>

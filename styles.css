@@ -136,6 +136,103 @@
   .del{background:none; border:none; color:var(--rust); cursor:pointer; font-size:12px;}
   .empty{color:var(--paper-dim); font-size:13px; padding:14px 0;}
 
+  /* applications filter bar */
+  .filter-bar{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px;}
+  .filter-bar input, .filter-bar select{
+    background:var(--surface-2); border:1px solid var(--line); color:var(--paper);
+    padding:7px 9px; border-radius:3px; font-family:inherit; font-size:13px;
+  }
+  .filter-bar input[type=text]{flex:1; min-width:160px;}
+  .filter-sep{color:var(--paper-dim); font-size:14px; align-self:center;}
+  .apps-count{font-size:11px; color:var(--paper-dim); margin-bottom:8px;}
+
+  /* status row colours */
+  tr.st-applied{background:rgba(91,138,142,.14); box-shadow:inset 3px 0 0 var(--teal);}
+  tr.st-screening{background:rgba(214,162,74,.13); box-shadow:inset 3px 0 0 var(--accent);}
+  tr.st-interview{background:rgba(110,150,222,.14); box-shadow:inset 3px 0 0 #6E96DE;}
+  tr.st-offer{background:rgba(96,177,120,.16); box-shadow:inset 3px 0 0 #60B178;}
+  tr.st-rejected{background:rgba(184,92,74,.15); box-shadow:inset 3px 0 0 var(--rust);}
+  tr.st-ghosted{background:rgba(155,163,173,.10); box-shadow:inset 3px 0 0 var(--paper-dim);}
+
+  /* delete confirmation modal */
+  .modal-overlay{position:fixed; inset:0; background:rgba(5,8,10,.65); display:flex; align-items:center; justify-content:center; z-index:50; padding:16px;}
+  .modal-overlay[hidden]{display:none;}
+  .modal{
+    background:var(--surface); border:1px solid var(--line); border-radius:5px; padding:20px;
+    width:min(420px,90vw); box-shadow:0 12px 40px rgba(0,0,0,.5);
+  }
+  .modal h3{font-size:15px; color:var(--paper); margin-bottom:8px;}
+  .modal p{font-size:13px; color:var(--paper-dim); margin:0 0 16px;}
+  .modal-actions{display:flex; justify-content:flex-end; gap:8px;}
+  .btn.danger{background:var(--rust); color:var(--paper);}
+  .btn.danger:hover{filter:brightness(1.12);}
+
   .footer-note{color:var(--paper-dim); font-size:11.5px; text-align:center; margin-top:30px;}
   #save-flag{position:fixed; bottom:16px; right:16px; background:var(--surface); border:1px solid var(--line); color:var(--paper-dim); font-size:11px; padding:6px 10px; border-radius:3px; opacity:0; transition:opacity .3s;}
   #save-flag.show{opacity:1;}
+
+  /* plan toggle */
+  .plan-toggle{display:flex; align-items:center; gap:6px; margin-left:auto;}
+  .pt-label{font-size:11px; color:var(--paper-dim); text-transform:uppercase; letter-spacing:.04em;}
+  .plan-btn{
+    background:none; border:1px solid var(--line); color:var(--paper-dim); font:inherit; font-size:12px;
+    padding:4px 10px; border-radius:3px; cursor:pointer;
+  }
+  .plan-btn.active{background:var(--accent); color:var(--ink); border-color:var(--accent); font-weight:600;}
+  .startdate-row{flex-wrap:wrap;}
+
+  /* funnel stats */
+  .funnel{display:flex; flex-wrap:wrap; gap:10px;}
+  .fstat{flex:1; min-width:110px; background:var(--surface-2); border:1px solid var(--line); border-radius:4px; padding:10px 12px;}
+  .fstat .n{font-family:ui-monospace,monospace; font-size:22px; color:var(--accent); line-height:1.1;}
+  .fstat .l{font-size:11px; color:var(--paper-dim); margin-top:2px;}
+
+  /* success checkpoints */
+  .checkpoint-row{display:flex; gap:10px; align-items:flex-start; padding:10px 0; border-bottom:1px solid var(--line); font-size:12.5px;}
+  .checkpoint-row:last-child{border-bottom:none;}
+  .checkpoint-row input{margin-top:3px;}
+  .checkpoint-row.done .cp-cap{color:var(--paper-dim); text-decoration:line-through;}
+  .cp-day{font-family:ui-monospace,monospace; color:var(--accent); font-size:11px; margin-bottom:2px;}
+  .cp-cap{display:block;}
+  .cp-srch{display:block; color:var(--paper-dim); margin-top:3px;}
+
+  /* data / guide tables */
+  .data-table{width:100%; border-collapse:collapse; font-size:12px;}
+  .data-table th{text-align:left; color:var(--paper-dim); font-weight:500; font-size:11px; padding:6px 8px; border-bottom:1px solid var(--line);}
+  .data-table td{padding:7px 8px; border-bottom:1px solid var(--line); vertical-align:top;}
+
+  /* weekly log quota line */
+  .log-quota{display:flex; flex-wrap:wrap; gap:8px; width:100%; font-size:11px; color:var(--paper-dim); margin-top:8px; padding-top:8px; border-top:1px dashed var(--line);}
+  .log-quota .lq-title{color:var(--accent); font-family:ui-monospace,monospace; font-size:10px; letter-spacing:.04em; text-transform:uppercase; width:100%;}
+  .log-quota b{color:var(--teal); font-family:ui-monospace,monospace;}
+
+  /* weekly plan quota + subtitle */
+  .quota-line{color:var(--teal);}
+
+  /* applications table helpers */
+  .sub{color:var(--paper-dim); font-size:11px;}
+  .mono-cell{font-family:ui-monospace,monospace; font-size:11px; color:var(--paper-dim); font-style:oblique;}
+  table thead th{white-space:nowrap;}
+
+  /* tips & guide */
+  .guide{padding:22px;}
+  .guide h4{
+    font-size:13px; color:var(--paper); margin:22px 0 10px; padding-bottom:6px;
+    border-bottom:1px solid var(--line); letter-spacing:.02em;
+  }
+  .guide h4:first-child{margin-top:0;}
+  .guide ul{margin:6px 0 10px; padding-left:20px; font-size:13px;}
+  .guide ul li{margin-bottom:5px;}
+  .proj{border-left:2px solid var(--accent-dim); padding:8px 0 8px 12px; margin:10px 0;}
+  .proj .ptitle{font-weight:600; font-size:13px; color:var(--paper);}
+  .proj p{margin:4px 0; font-size:12.5px; color:var(--paper-dim);}
+  .proof{color:var(--teal); font-size:12px; font-style:italic;}
+  .mono-b{font-family:ui-monospace,"SF Mono","Cascadia Code","Consolas",monospace; font-size:12.5px;}
+  .search-str{font-family:ui-monospace,monospace; font-size:12px; color:var(--teal); display:block; margin:3px 0;}
+  .cap-sub{font-size:12.5px; color:var(--paper-dim); margin:8px 0 4px;}
+  .quotas li b{color:var(--accent);}
+  .callout{background:var(--surface-2); border:1px solid var(--line); border-left:3px solid var(--accent); padding:10px 12px; font-size:12.5px; margin:12px 0;}
+  .callout .ctitle{font-weight:600; color:var(--accent); font-size:11px; letter-spacing:.05em; margin-bottom:4px; font-family:ui-monospace,monospace; text-transform:uppercase;}
+  .callout p{margin:6px 0;}
+  .src-list{font-size:12px; color:var(--paper-dim);}
+  .src-list a{color:var(--accent);}
