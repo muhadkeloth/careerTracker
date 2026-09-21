@@ -11,7 +11,7 @@
   <div class="cmdbar">
     <div class="title">
       <h1>SOFTWARE DEVELOPER SWITCH STRATEGY</h1>
-      <p>Backend Node.js + TypeScript + PostgreSQL + Redis + AWS + AI/LLM &mdash; a 4-6 month switch plan</p>
+      <p>Backend Node.js + TypeScript + PostgreSQL + Redis + AWS + AI/LLM &mdash; a 4-6 month switch plan with a continuous DSA track and a market-feedback loop</p>
     </div>
     <div class="stat">
       <div class="num" id="days-left">&mdash;</div>
@@ -36,6 +36,8 @@
     <button class="tab-btn" data-tab="plan">Weekly Plan</button>
     <button class="tab-btn" data-tab="track">Tracking</button>
     <button class="tab-btn" data-tab="apps">Applications</button>
+    <button class="tab-btn" data-tab="readiness">Readiness</button>
+    <button class="tab-btn" data-tab="metrics">Metrics</button>
     <button class="tab-btn" data-tab="guide">Tips &amp; Guide</button>
   </div>
 
@@ -128,14 +130,51 @@
     </div>
   </div>
 
+  <div class="tab-panel" id="tab-readiness">
+    <div class="panel">
+      <h3>INTERVIEW READINESS SCORE</h3>
+      <div id="readiness-root"></div>
+    </div>
+    <div class="panel">
+      <h3>DSA LOG (TARGET ~100 PROBLEMS)</h3>
+      <div id="dsa-root"></div>
+    </div>
+    <div class="panel">
+      <h3>PRODUCTION STORY BANK (TARGET 10-15 STORIES)</h3>
+      <div id="story-root"></div>
+    </div>
+    <div class="panel">
+      <h3>MOCK INTERVIEW LOG</h3>
+      <div id="mock-root"></div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="tab-metrics">
+    <div class="panel">
+      <h3>CAREER CONVERSION METRICS (WEEKLY)</h3>
+      <div id="conv-root"></div>
+      <div class="conv-note">Log these numbers every week as part of the Weekly Job Market Analysis task. Track rejection reasons where possible (ATS / HR / technical / salary / other).</div>
+    </div>
+    <div class="panel">
+      <h3>FUNNEL RATIOS</h3>
+      <div id="rate-root"></div>
+    </div>
+    <div class="panel">
+      <h3>TARGET SALARY</h3>
+      <div id="salary-root"></div>
+    </div>
+    <div class="panel">
+      <h3>INTERPRETING YOUR FUNNEL</h3>
+      <div id="interpret-root"></div>
+    </div>
+  </div>
+
   <div class="tab-panel" id="tab-guide">
     <div class="guide panel">
 
       <div class="callout">
         <div class="ctitle">THE DECISION</div>
-        Do not learn a new stack and start over. Keep the production experience in JavaScript/TypeScript, turn it into a
-        credible backend-engineering identity, add PostgreSQL / Redis / cloud / testing, and use AI integration as the
-        differentiator. Run India as the main funnel while testing UAE, India-eligible remote, and selective Saudi roles.
+        Do not learn a new stack and start over. Keep the production experience in JavaScript/TypeScript, turn it into a credible backend-engineering identity, add PostgreSQL / Redis / cloud / testing, and use AI integration as the differentiator. Test the market from Week 1 (5-10 targeted applications/week) so your resume, targeting and preparation adapt to real feedback &mdash; not assumptions. Run India as the main funnel while testing UAE, India-eligible remote, and selective Saudi roles.
       </div>
 
       <h4>Target positioning (what to present)</h4>
@@ -143,65 +182,120 @@
         <thead><tr><th>Layer</th><th>What to present</th><th>Depth required</th></tr></thead>
         <tbody>
           <tr><td><b>Primary identity</b></td><td>Backend Software Engineer &mdash; Node.js / TypeScript</td><td>Production-quality APIs, architecture, async Node, security, performance</td></tr>
-          <tr><td>Database</td><td>PostgreSQL + MongoDB</td><td>SQL, indexes, transactions, query plans, schema design; retain MongoDB competence</td></tr>
-          <tr><td>Caching / jobs</td><td>Redis + BullMQ (or equivalent)</td><td>Caching, rate limiting, queues, retries, idempotency</td></tr>
-          <tr><td>API architecture</td><td>REST first; GraphQL familiarity</td><td>Auth, validation, versioning, pagination, errors, observability</td></tr>
-          <tr><td>Cloud</td><td>AWS core</td><td>ECS/ECR or EC2, RDS, S3, CloudWatch, IAM, SQS; know what each is for</td></tr>
+          <tr><td>Database</td><td>PostgreSQL (primary)</td><td>SQL, indexes, transactions, query plans, schema design; MongoDB kept as optional retained familiarity</td></tr>
+          <tr><td>Caching / jobs</td><td>Redis + BullMQ</td><td>Caching, TTL, cache invalidation, rate limiting, distributed-lock concept, session-store concept, queues, retries, idempotency</td></tr>
+          <tr><td>API architecture</td><td>REST first</td><td>Auth, validation, versioning, pagination, errors, observability</td></tr>
+          <tr><td>Cloud</td><td>AWS core (not DevOps)</td><td>ECS/ECR or EC2, RDS, S3, CloudWatch, IAM (MUST); SQS, Load Balancer, VPC basics, Auto Scaling (understand)</td></tr>
           <tr><td>Delivery</td><td>Docker + GitHub Actions</td><td>Build/test/deploy pipeline; environment management; secrets</td></tr>
           <tr><td>Quality</td><td>Jest + integration/e2e tests</td><td>Test API boundaries and critical business workflows</td></tr>
-          <tr><td>AI layer</td><td>OpenAI / Azure OpenAI / Bedrock + RAG basics</td><td>Embeddings, pgvector / vector DB, retrieval, tool calling, evals, cost/latency</td></tr>
+          <tr><td>AI layer</td><td>Backend Engineer + AI Integration (not AI/ML)</td><td>LLM APIs, prompt design, embeddings, vector search, pgvector, retrieval, citations, streaming, tool calling, token/cost/latency, basic RAG evaluation</td></tr>
           <tr><td>Frontend</td><td>React / Next.js</td><td>Enough to own end-to-end features; not your headline specialization</td></tr>
-          <tr><td>Interview CS</td><td>DSA + backend/system design</td><td>~100 solid problems; API/data-model/caching/queues/scaling fundamentals</td></tr>
+          <tr><td>Interview CS</td><td>Continuous DSA + backend/system design</td><td>~100 solid problems via a weekly DSA track; API/data-model/caching/queues/scaling fundamentals</td></tr>
         </tbody>
       </table>
 
-      <h4>What to learn deeply</h4>
+      <h4>What to learn deeply (in priority order)</h4>
       <ul>
-        <li><b>Advanced TypeScript</b> &mdash; generics, narrowing, utility types, error modeling, clean interfaces.</li>
-        <li><b>Node.js internals</b> &mdash; event loop, async patterns, streams, worker threads at a conceptual level, memory/performance troubleshooting.</li>
-        <li><b>PostgreSQL</b> &mdash; joins, indexes, transactions/isolation, normalization, query plans, pagination, locking, practical optimization.</li>
-        <li><b>Redis</b> &mdash; caching, TTL, distributed locks conceptually, rate limiting, queues/job state.</li>
-        <li><b>Backend architecture</b> &mdash; modular monolith first, service boundaries, retries, idempotency, eventual consistency, API security.</li>
+        <li><b>Continuous DSA track</b> &mdash; 8-10 work items weekly (new problems + revision), ~100 solid problems: arrays, hash maps, strings, two pointers, sliding window, stacks/queues, binary search, linked lists, trees, heaps, intervals, graph basics, recursion/backtracking, basic DP. Never postponed behind backend learning.</li>
+        <li><b>TypeScript + Node.js</b> &mdash; generics, narrowing, utility types, error modeling; event loop, async patterns, streams, memory/performance troubleshooting.</li>
+        <li><b>PostgreSQL</b> &mdash; joins, indexes, transactions/isolation, normalization, query plans, pagination, locking, practical optimization; Prisma.</li>
+        <li><b>Backend security (MUST KNOW)</b> &mdash; password hashing, JWT + refresh tokens, RBAC, input validation, rate limiting, secure headers, secrets management; then SQL/NoSQL injection, XSS, CSRF, CORS, OWASP API Security basics.</li>
+        <li><b>Redis</b> &mdash; caching, TTL, cache invalidation, rate limiting, distributed-lock concept, session-store concept, BullMQ/queues.</li>
+        <li><b>System design</b> &mdash; fundamentals, data, performance, distributed systems, infrastructure, observability + the exercise bank (URL shortener, notifications, chat, file upload, booking, payments/webhooks, CRM, job queue, AI/RAG).</li>
         <li><b>Docker + AWS</b> &mdash; containerize, deploy, logs/metrics, IAM basics, RDS/S3/SQS/ECS/ECR/CloudWatch.</li>
-        <li><b>Testing</b> &mdash; Jest unit/integration tests, API contract thinking, Playwright for one e2e path.</li>
+        <li><b>Testing</b> &mdash; Jest unit/integration/e2e; API contract thinking.</li>
         <li><b>AI application engineering</b> &mdash; one reliable RAG system and one tool-using workflow; production concerns, not ML math.</li>
-        <li><b>DSA</b> &mdash; arrays/hash maps, strings, two pointers, sliding window, stacks/queues, trees, graph basics, binary search, heaps, recursion/backtracking, intervals, basic DP.</li>
-        <li><b>Communication</b> &mdash; concise project explanations and STAR answers.</li>
+        <li><b>Communication</b> &mdash; concise project explanations, STAR answers, salary negotiation.</li>
       </ul>
 
-      <h4>What NOT to prioritize yet</h4>
-      <ul>
-        <li>Deep Kubernetes administration and platform engineering.</li>
-        <li>Java/Spring Boot or .NET/C# from zero as a primary stack.</li>
-        <li>Fine-tuning foundation models, advanced ML math, CUDA/GPU engineering.</li>
-        <li>Five AI frameworks at surface level &mdash; one production-quality AI integration is worth more.</li>
-        <li>Dozens of toy CRUD repositories.</li>
-      </ul>
+      <div class="callout">
+        <div class="ctitle">AVOID SCOPE CREEP (DO NOT LEARN NOW)</div>
+        Do NOT make these core objectives during the 6-month plan: Java/Spring, .NET, advanced Python, Machine Learning, Kubernetes, Terraform, advanced DevOps, Kafka, advanced cloud architecture. They only make sense after the career switch. Spend the saved time on DSA, system design, mock interviews and real funnel feedback.
+      </div>
 
       <h4>Portfolio projects</h4>
       <div class="proj">
-        <div class="ptitle">Project 1 &mdash; Multi-tenant production SaaS backend</div>
-        <p>A realistic B2B workflow platform: Node/TypeScript, NestJS or clean Express, PostgreSQL/Prisma, Redis, background jobs, S3, WebSockets, Docker, AWS, GitHub Actions. Multi-tenancy, RBAC, audit logs, rate limiting, idempotent webhook processing, file uploads, search/filtering, scheduled jobs, notifications, admin surface. API docs, integration tests, load/performance notes, an ADR.</p>
+        <div class="ptitle">Project 1 &mdash; Multi-tenant production SaaS backend (phased)</div>
+        <p><b>Phase 1 &mdash; MVP:</b> Node/TypeScript + NestJS + PostgreSQL/Prisma, REST APIs, authentication (JWT + refresh), RBAC, validation, error handling, basic Jest tests.</p>
+        <p><b>Phase 2 &mdash; Production features:</b> Redis caching, rate limiting, BullMQ background jobs, notifications, S3/file storage, idempotency, audit logs.</p>
+        <p><b>Phase 3 &mdash; Deployment:</b> Docker, AWS, ECR, ECS (or EC2), RDS, S3, IAM, CloudWatch, CI/CD.</p>
+        <p><b>Phase 4 &mdash; Engineering documentation:</b> architecture diagram, database ER diagram, API docs, architecture decisions (ADRs), performance + security notes, deployment README, trade-offs.</p>
+        <p>Complete each phase before the next; you do not need every advanced feature to call the project done.</p>
         <p class="proof">Resume proof: "Designed and deployed a multi-tenant Node/TypeScript backend with PostgreSQL, Redis, background jobs, RBAC and automated deployment."</p>
       </div>
       <div class="proj">
-        <div class="ptitle">Project 2 &mdash; AI operations / knowledge assistant</div>
-        <p>Ingest documents, chunk and embed, store in pgvector, retrieve with filters, stream answers, attach citations, support tool/function calls, maintain tenant isolation, log latency/token usage, evaluate retrieval quality. TypeScript/Node for the service; Python optional, never required.</p>
+        <div class="ptitle">Project 2 &mdash; AI backend integration (the differentiator)</div>
+        <p>Position it as <b>Backend Engineer + AI Integration</b>, never "AI/ML Engineer". Ingest documents, chunk and embed, store in pgvector, retrieve with filters, stream answers with citations, support tool/function calls, log token usage + latency, control cost, and evaluate retrieval quality. TypeScript/Node service; the backend engineering is the hard part.</p>
         <p class="proof">Resume proof: "Built a production-style RAG service with Node/TypeScript, vector search, retrieval evaluation, streaming responses, access control and cost/latency telemetry."</p>
       </div>
       <div class="proj">
-        <div class="ptitle">Project 3 &mdash; Harden your current CarCare project</div>
-        <p>Do not build another simple app. Improve API performance, add PostgreSQL as a reporting/analytical path, Redis caching, background jobs, tests, structured logging, CI/CD, Docker and an architecture document. Never expose proprietary work from your employer.</p>
+        <div class="ptitle">Project 3 &mdash; CarCare enhancements (OPTIONAL, after the primary project)</div>
+        <p>Do not build more toy CRUD apps. Use CarCare to show engineering maturity: add a PostgreSQL path where appropriate, Redis caching, background jobs, Docker, Jest tests, structured logging, CI/CD, better API architecture, performance optimization. Never expose proprietary work from your employer.</p>
       </div>
+
+      <h4>Backend Security track</h4>
+      <table class="data-table">
+        <thead><tr><th>Priority</th><th>Topics</th></tr></thead>
+        <tbody>
+          <tr><td><b>MUST KNOW</b></td><td>Password hashing, JWT, refresh tokens, RBAC, input validation, rate limiting, secure headers, secrets management</td></tr>
+          <tr><td><b>OPTIONAL</b></td><td>SQL injection, NoSQL injection, XSS, CSRF, CORS, OWASP API Security basics</td></tr>
+        </tbody>
+      </table>
+      <p class="cap-sub">Security appears in the week plan as tasks; pass every MUST KNOW concept on the Readiness tab before Month 3.</p>
+
+      <h4>AWS scope (backend developer, not a DevOps specialist)</h4>
+      <table class="data-table">
+        <thead><tr><th>Priority</th><th>Topics</th></tr></thead>
+        <tbody>
+          <tr><td><b>MUST KNOW</b></td><td>EC2, S3, RDS, IAM, CloudWatch, ECR, ECS</td></tr>
+          <tr><td><b>SHOULD UNDERSTAND</b></td><td>SQS, Load Balancer, VPC basics, Auto Scaling</td></tr>
+        </tbody>
+      </table>
+      <p class="cap-sub">Goal: confidently explain and deploy a production backend on AWS &mdash; not become an AWS infrastructure specialist.</p>
+
+      <h4>Redis scope (practical backend use, not theory)</h4>
+      <p class="cap-sub">Focus on: caching, TTL, cache invalidation, rate limiting, distributed-lock concept, session-store concept, BullMQ/queues. Prove each with an implementation task in the project rather than excessive reading.</p>
+
+      <h4>System design track (starts Month 2)</h4>
+      <ul class="quotas">
+        <li><b>Fundamentals</b> &mdash; client/server, REST, HTTP, API design, authentication, authorization</li>
+        <li><b>Data</b> &mdash; SQL vs NoSQL, indexing, transactions, normalization, replication, partitioning basics</li>
+        <li><b>Performance</b> &mdash; caching, Redis, CDN, pagination, rate limiting</li>
+        <li><b>Distributed systems</b> &mdash; message queues, background jobs, event-driven architecture, idempotency, retries, failure handling</li>
+        <li><b>Infrastructure</b> &mdash; load balancing, horizontal scaling, Docker, AWS deployment</li>
+        <li><b>Observability</b> &mdash; logging, metrics, monitoring, error tracking</li>
+      </ul>
+      <p class="cap-sub">Exercise bank (10-minute or 45-minute designs): URL shortener, notification system, chat system, file upload service, booking system, payment/webhook system, CRM, job queue, AI/RAG application.</p>
+
+      <h4>Weekly operating rhythm (recurring, every week)</h4>
+      <ul class="quotas">
+        <li><b>DSA track</b> &mdash; 8-10 work items: learn &rarr; practice &rarr; revise &rarr; timed. ~100 solid problems total; never postponed.</li>
+        <li><b>Targeted applications</b> &mdash; Month 1: 5-10/week (test ATS, learn requirements, find gaps). Month 2+: 15-25/week. Later: 20-30/week if quality holds. Targeted beats mass.</li>
+        <li><b>Weekly Job Market Analysis</b> &mdash; log apps, recruiter replies, HR screens, tech/final interviews, offers, rejections (incl. ATS + reasons) in Metrics.</li>
+        <li><b>Weekly Mock Interview Day</b> &mdash; 30m DSA &middot; 30m Node/TS/backend &middot; 30m PostgreSQL/Redis/AWS &middot; 30m system design/project/behavioral. Track score, weak areas, topics to revise, confidence, missed questions.</li>
+        <li><b>STAR story</b> &mdash; draft/refine one production story toward the 10-15 story bank.</li>
+      </ul>
+      <div class="callout">
+        <div class="ctitle">INTERPRETING YOUR FUNNEL</div>
+        <p><b>High ATS rejection</b> &rarr; improve resume / keywords per target titles.</p>
+        <p><b>Recruiter response but technical rejection</b> &rarr; improve technical preparation (DSA + backend fundamentals).</p>
+        <p><b>Technical pass but HR rejection</b> &rarr; improve communication / behavioral answers.</p>
+        <p><b>Multiple technical interview failures</b> &rarr; identify repeated technical gaps from mock logs and fix them.</p>
+      </div>
+
+      <h4>Production Story Bank</h4>
+      <p class="cap-sub">Target 10-15 interview stories from real professional experience. Categories: difficult bug, production issue, performance optimization, API optimization, database problem, architecture decision, refactoring, feature ownership, client requirement, team disagreement, tight deadline, failure and lesson, collaboration, deployment issue, technical trade-off.</p>
+      <p class="cap-sub">Every story follows <b>Situation &rarr; Task &rarr; Action &rarr; Result</b> with a measurable result. Build one per week (recurring task on the Weekly Plan), then refine them through Months 5-6.</p>
 
       <h4>Job-search execution system</h4>
       <ul class="quotas">
-        <li><b>20-25 high-fit applications/week</b> once Month 2 begins &mdash; prioritize fit over volume.</li>
+        <li><b>Month 1:</b> 5-10 targeted applications/week — purpose is to test ATS performance, learn requirements, identify skill gaps and start the interview pipeline.</li>
+        <li><b>Month 2 onward:</b> 15-25 targeted applications/week; 20-30/week in later months if quality can be maintained.</li>
         <li><b>5 referral conversations/week</b> &mdash; colleagues, alumni, engineers at target companies, community.</li>
-        <li><b>10 recruiter / hiring-manager messages/week</b> with a two-sentence pitch and one relevant proof project.</li>
+        <li><b>10 recruiter / hiring-manager messages/week</b> (Month 5-6) with a two-sentence pitch and one relevant proof project.</li>
         <li>Track each application: title, company, location, source, required stack, date, resume version, response, interview stage, reason for rejection.</li>
       </ul>
-      <p class="cap-sub">Primary titles: Backend Software Engineer, Backend Developer, Software Engineer &mdash; Backend, Node.js Backend Engineer, TypeScript Backend Engineer, Software Engineer &mdash; Full Stack (Node/React), Product Engineer. Secondary (only when backend/application-focused): AI Application Engineer, AI Software Engineer, GenAI Application Engineer.</p>
+      <p class="cap-sub">Target titles: Backend Engineer, Backend Developer, Node.js Developer, TypeScript Backend Developer, Software Engineer, Full-Stack Developer with backend strength, AI-integrated Backend Engineer. Apply with a two-sentence pitch + one proof project.</p>
       <p class="cap-sub">Search strings:</p>
       <span class="search-str">("Node.js" OR NestJS OR Express) AND TypeScript AND (PostgreSQL OR SQL) AND (AWS OR cloud)</span>
       <span class="search-str">("Node.js" OR TypeScript) AND (RAG OR LLM OR "AI integration") AND (backend OR API)</span>
@@ -209,10 +303,16 @@
       <p class="cap-sub">Resume rules: lead with measurable production work &mdash; not a technology list. Keep BCA honest but small. Two variants: India product/GCC and Gulf/remote (the Gulf version makes relocation + sponsorship readiness explicit).</p>
 
       <h4>Salary strategy</h4>
+      <div class="callout">
+        <div class="ctitle">TARGET SALARY (YOUR OWN TARGETS, NOT GUARANTEES)</div>
+        <p><b>Minimum acceptable:</b> ₹8-10 LPA</p>
+        <p><b>Target:</b> ₹10-15 LPA</p>
+        <p><b>Stretch:</b> ₹15-18+ LPA</p>
+      </div>
       <table class="data-table">
         <thead><tr><th>Market</th><th>Priority</th><th>Core target</th><th>Stretch</th><th>Reality check</th></tr></thead>
         <tbody>
-          <tr><td>India &mdash; Bengaluru / Hyderabad / Pune / Chennai / NCR</td><td>Primary funnel</td><td>₹10-15 LPA</td><td>₹14-18 LPA</td><td>₹12 LPA is realistic but must be earned through evidence.</td></tr>
+          <tr><td>India &mdash; Bengaluru / Hyderabad / Pune / Chennai / NCR</td><td>Primary funnel</td><td>₹10-15 LPA</td><td>₹15-18+ LPA</td><td>Minimum acceptable ₹8-10 LPA (floor, not the ask). ₹12 LPA is realistic but must be earned through evidence.</td></tr>
           <tr><td>UAE &mdash; Dubai / Abu Dhabi</td><td>Parallel high-value funnel</td><td>AED 12k-15k/month</td><td>AED 15k-18k+</td><td>Quality-target band, not a guaranteed market median.</td></tr>
           <tr><td>Saudi Arabia &mdash; Riyadh</td><td>Selective parallel funnel</td><td>SAR 10k-16k/month</td><td>SAR 16k-20k+</td><td>Listings skew 3-8+ years; authorization is employer-linked.</td></tr>
           <tr><td>International remote from India</td><td>Selective upside funnel</td><td>₹15-25 LPA equivalent</td><td>₹25-35+ LPA equivalent</td><td>Only where "India Remote" / India employment is explicit.</td></tr>
@@ -229,16 +329,17 @@
         <li><b>UAE:</b> standard employment visa is employer-applied; employers must obtain the work permit. The virtual-work residence route is for working outside the country, not a substitute for in-country sponsorship.</li>
         <li><b>Saudi:</b> non-Saudis need a work permit and employer employment; permanent/temporary work-visa processes exist via official platforms.</li>
         <li><b>Remote from India:</b> direct employment through an Indian entity, an Employer of Record, or contractor engagement. Apply where "India Remote" is explicit &mdash; never on a generic "remote" label.</li>
-        <li><b>Education risk (ongoing BCA):</b> a screening risk at some companies, not proof you cannot reach ₹10-15 LPA. Compete on production experience, measurable work, portfolio depth and interview performance while continuing the degree.</li>
+        <li><b>Education risk (ongoing BCA):</b> a screening risk at some companies, not proof you cannot reach the target salary. Compete on production experience, measurable work, portfolio depth and interview performance while continuing the degree.</li>
       </ul>
 
       <h4>What can prevent the target salary</h4>
       <ul>
         <li>Resume stays "MERN developer" with no measurable backend ownership.</li>
         <li>Projects are CRUD clones with no performance / security / testing / cloud / architecture proof.</li>
-        <li>DSA is weak enough to fail coding rounds after recruiter screens.</li>
+        <li>DSA is weak enough to fail coding rounds after recruiter screens — solved by the continuous weekly DSA track.</li>
         <li>You cannot explain current production work deeply &mdash; trade-offs, bugs, architecture, DB choices, performance fixes.</li>
-        <li>You apply indiscriminately and accumulate ATS rejections instead of testing a targeted thesis.</li>
+        <li>You apply indiscriminately and accumulate ATS rejections instead of testing a targeted thesis early.</li>
+        <li>You stop logging funnel data, so you tune resume and preparation on guesses instead of evidence.</li>
         <li>You claim AI/cloud expertise without building and debugging a working system.</li>
         <li>Communication is unclear, especially project explanations and behavioral answers.</li>
         <li>The ₹3 LPA anchors your negotiation instead of the role's scope and market band.</li>

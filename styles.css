@@ -236,3 +236,58 @@
   .callout p{margin:6px 0;}
   .src-list{font-size:12px; color:var(--paper-dim);}
   .src-list a{color:var(--accent);}
+
+  /* task priority badges */
+  .prio-legend{font-size:11px; color:var(--paper-dim); margin-bottom:14px;}
+  .prio{font-family:ui-monospace,"SF Mono","Cascadia Code","Consolas",monospace; font-size:9px; font-weight:700; letter-spacing:.06em; padding:1px 5px; border-radius:2px; margin-right:6px; vertical-align:1px; display:inline-block;}
+  .prio-m{background:var(--accent); color:var(--ink);}
+  .prio-s{background:var(--teal); color:var(--ink);}
+  .prio-o{background:var(--surface-2); color:var(--paper-dim); border:1px solid var(--line);}
+  .task-row label{color:var(--paper);}
+  .task-row.done label{color:var(--paper-dim); text-decoration:line-through;}
+
+  /* readiness */
+  .ready-select{
+    background:var(--surface-2); border:1px solid var(--line); color:var(--paper); border-radius:3px; font-size:12px; padding:3px 5px;
+  }
+  .score-note{font-size:12px; color:var(--paper-dim); margin:8px 0;}
+  .dsa-entry{display:flex; gap:8px; align-items:center; font-size:12.5px; color:var(--paper-dim); margin:10px 0;}
+  .dsa-entry input{
+    background:var(--surface-2); border:1px solid var(--line); color:var(--paper); padding:5px 8px; border-radius:3px; width:70px; font:inherit;
+  }
+
+  /* story bank */
+  .story-row{border-bottom:1px solid var(--line); padding:8px 0;}
+  .story-row:last-child{border-bottom:none;}
+  .story-head{display:flex; gap:8px; align-items:center; font-size:12.5px; margin-bottom:4px;}
+  .story-head input{margin:0;}
+  .story-head .story-cat{font-weight:600;}
+  .story-row.done .story-cat{color:var(--paper-dim);}
+  .story-row textarea{
+    width:100%; background:var(--surface-2); border:1px solid var(--line); color:var(--paper);
+    border-radius:3px; padding:6px 8px; font-family:inherit; font-size:12.5px; resize:vertical; margin-top:4px;
+  }
+
+  /* mock log */
+  .mock-form{display:flex; flex-wrap:wrap; gap:8px; align-items:flex-end; margin-bottom:12px;}
+  .mock-form .log-field{flex:1; min-width:110px;}
+  .mock-form .log-field input, .mock-form .log-field select{
+    background:var(--surface-2); border:1px solid var(--line); color:var(--paper); padding:5px 8px; border-radius:3px; font:inherit; font-size:12.5px; width:100%;
+  }
+  .mock-form .log-field input[type=date]{width:auto;}
+  .mock-form .log-field input[type=number]{width:70px;}
+  .mock-form .log-field select{width:auto;}
+  .mock-row{display:flex; flex-wrap:wrap; gap:10px; align-items:center; font-size:12.5px; padding:6px 0; border-bottom:1px solid var(--line);}
+  .mock-row:last-child{border-bottom:none;}
+  .mock-date{font-family:ui-monospace,monospace; color:var(--accent); font-size:11px;}
+  .mock-score{font-family:ui-monospace,monospace; color:var(--paper);}
+  .mock-conf{color:var(--paper-dim);}
+  .mock-note{flex:1; color:var(--paper-dim); min-width:140px;}
+
+  /* metrics */
+  .conv-note{font-size:11px; color:var(--paper-dim); margin-top:8px;}
+  .note-input{width:auto; min-width:150px;}
+  .salary-row{display:flex; justify-content:space-between; gap:10px; align-items:baseline; padding:8px 0; border-bottom:1px solid var(--line); font-size:13px;}
+  .salary-row:last-child{border-bottom:none;}
+  .salary-row .sal-label{color:var(--paper-dim);}
+  .salary-row b{color:var(--accent); font-family:ui-monospace,monospace;}
